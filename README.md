@@ -1,5 +1,5 @@
 # -Colossal-Cave-Adventure
-Creation of a  Colossal Cave Adventure -like game
+Creation of a  Colossal Cave Adventure -like game in JAVA.
 commands:
 
 COMMAND [ARGUMENT] -> execute a specific action based on a game command with/without the argument
