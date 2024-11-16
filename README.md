@@ -19,5 +19,7 @@ The various commands are as such:
 
 -> SAVE -> save the game in the game files.
 
+-> QUIT -> exit the game
+
 -> USE object1 [object2] -> use an object, if the object require a second argument then it must be used with
 a second one. 
