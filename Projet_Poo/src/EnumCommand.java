@@ -5,9 +5,7 @@ public class EnumCommand {
 
     private Command command;
 
-    public EnumCommand(Command command) {
-        this.command = command;
-    }
+
 
 
 }

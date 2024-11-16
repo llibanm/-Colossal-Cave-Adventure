@@ -60,22 +60,8 @@ public class Game //extends CommandImplementation
     }
 
 
-
-    public void addCommandArgumentIntoList(){// pour récupérer les commandes dans le chaine de charactere
-        String commandInput;
-
-        int index=commandString.indexOf(' ');
-
-        if( index== -1 ){
-            System.out.print("""
-                    The output is undetectable.
-                    Please try again.
-                    """);
-            return;
-        }
-        commandInput=commandString.substring(0,index); //on récupère la première instance avant un espace
-
-        switch(commandInput.toUpperCase()){ // on le change en type énuméré
+    public void transformStringToEnum(String command){
+        switch(command.toUpperCase()){ // on le change en type énuméré
             case "HELP":
                 currentCommand=EnumCommand.Command.HELP;break;
             case "QUIT":
@@ -101,27 +87,45 @@ public class Game //extends CommandImplementation
                         Unknown command.
                         please try again.
                         """);
-                return;
         }
 
-        commandInput=commandString.substring(index); // on récupère ce qu'il y'a après l'espace
-
-        if(commandInput.isEmpty()){
-            return;
-        }
-
-        index=commandInput.indexOf(' '); // on récupère la deuxieme instance d'espace
-
-        if(index== -1 ){
-            command.addCommand(commandInput);
-        }
-        else{ // on ajoute les arguments dans la liste
-            command.addCommand(commandInput.substring(0, index));
-            command.addCommand(commandInput.substring(index+1));
-        }
     }
 
-    //
+
+    public void addCommandArgumentIntoList(){// pour récupérer les commandes dans le chaine de charactere
+        String commandInput;
+
+        int index=commandString.indexOf(' ');
+
+        if( index== -1 ){
+            commandInput=commandString;
+            transformStringToEnum(commandInput);
+        }
+
+        else {
+            commandInput = commandString.substring(0, index); //on récupère la première instance avant un espace
+            transformStringToEnum(commandInput);
+
+            commandInput=commandString.substring(index+1); // on récupère ce qu'il y'a après l'espace
+
+            if(commandInput.isEmpty()){
+                return;
+            }
+
+            index=commandInput.indexOf(' '); // on récupère la deuxieme instance d'espace
+
+            if(index== -1 ){
+                command.addCommand(commandInput); // si pas de deuxiemme argument, on ajoute le premier arg dans
+            }                                     // la liste
+
+            else{ // on ajoute les  deux arguments dans la liste
+                command.addCommand(commandInput.substring(0, index));
+                command.addCommand(commandInput.substring(index+1));
+            }
+        }
+
+
+    }
 
     // JEU
 
@@ -134,6 +138,8 @@ public class Game //extends CommandImplementation
                ScanGame();
                addCommandArgumentIntoList();
            }
+
+           //printCommand();
 
            switch(currentCommand){
                case EnumCommand.Command.HELP:
@@ -151,7 +157,9 @@ public class Game //extends CommandImplementation
                                          """);
                    break;
            }
+           currentCommand=null;
            command.emptyCommand();
+
        }
        closeScan();
 

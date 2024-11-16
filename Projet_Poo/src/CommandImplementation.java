@@ -16,28 +16,18 @@ public class CommandImplementation implements CommandInterface {
         this.command.add(command);
     }
 
+    public void printCommand() {
+        for (String command : this.command) {
+            System.out.println(command);
+        }
+    }
+
     public int getNumCommand() {
         return command.size();
     }
 
-    public String getCommand(int index) {
-        return command.get(index);
-    }
-
-    public List<String> getList() {
-        return command;
-    }
-
-    public String getFirstCommand() {
+    public String getFirstArg() {
         return command.getFirst();
-    }
-
-    public String getCommand(String command) {
-        for(int i=0;i<getNumCommand();i++)
-         if(command.equals(getCommand(i).toUpperCase())){
-            return getCommand(i);
-        }
-        return null;
     }
 
     public boolean isEmptyCommand() {
@@ -45,7 +35,7 @@ public class CommandImplementation implements CommandInterface {
     }
 
     public String getSecondCommand() {
-        return this.command.get(getNumCommand()-1);
+        return command.get(getNumCommand()-1);
     }
 
     public void emptyCommand() {
@@ -71,8 +61,8 @@ public class CommandImplementation implements CommandInterface {
             return;
         }
 
-        String c= getSecondCommand();
-        switch(c){
+        String c= getFirstArg();
+        switch(c.toUpperCase()){
             case "GO":
                 System.out.println("\"GO <Location> -> Move the main character in the corresponding Location\n");
             break;
@@ -107,6 +97,7 @@ public class CommandImplementation implements CommandInterface {
 
             case "QUIT":
                 System.out.println("QUIT -> Exit the game.\n");
+                break;
             default:
                 System.out.println("""
                         HELP <Argument> -> Print the menu of commands if no argument given with it. Else, print the corresponding argument's description.
