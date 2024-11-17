@@ -6,7 +6,7 @@ The various commands are as such:
 
 -> GO location -> send the player to a location/exit.
 
--> LOOK [LOCATION] -> if no argument given, display a menu of all observable arguments. Else display a description of the given argument, whether items or location.
+-> LOOK [Object] -> if no argument given, display a menu of all observable arguments. Else display a description of the given argument, whether items or location.
 
 -> HELP[COMMAND] -> if no argument given, indicates the set of availaible commands, else return the description of the given command in argument.
 
