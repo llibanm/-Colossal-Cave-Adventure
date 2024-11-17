@@ -1,6 +1,8 @@
+import CommandImplementationPackage.*;
+
 import java.util.Scanner;
 
-public class Game //extends CommandImplementation
+public class Game //extends CommandImplementation.CommandImplementation
 {
     private CommandImplementation command;
     private EnumCommand.Command currentCommand;
