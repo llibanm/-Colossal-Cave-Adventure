@@ -21,8 +21,9 @@ public  class Exit {
     }
 
     public  void cross(Game game) {
+        Location currloc = game.getCurrentLocation();
         for(Location dest : this.destination){
-            if(game.getCurrentLocation() != dest){
+            if( currloc != dest){
                 //on met la location courant du monde
                 game.setCurrentLocation(dest);
             }

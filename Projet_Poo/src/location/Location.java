@@ -29,7 +29,8 @@ public class Location {
     }
 
     public void goToDestination(String dest, Game game) {
-        exists.get(dest).cross(game);
+        Exit destination = exists.get(dest);
+        destination.cross(game);
     }
 
     public  void setExit(String name, Exit newExit){
