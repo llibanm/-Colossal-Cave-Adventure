@@ -27,7 +27,8 @@ public class CommandImplementation implements CommandInterface {
     }
 
     public String getFirstArg() {
-        return command.getFirst();
+        //command.getFirst();
+        return command.get(0);
     }
 
     public boolean isEmptyCommand() {
