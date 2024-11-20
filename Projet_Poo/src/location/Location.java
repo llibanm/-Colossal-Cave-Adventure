@@ -8,12 +8,11 @@ public class Location {
 
     private String name;
     private Map<String,  Exit> exists = new HashMap<String, Exit>();
-
-
     public Location(String name) {
         this.name = name;
     }
 
+    /**affiche les sorties de la location*/
     public void printLocation() {
         if (exists == null || exists.isEmpty()) {
             System.out.println("Aucune sortie disponible.");

@@ -3,7 +3,7 @@ package location;
 import game.Game;
 
 public  class Exit {
-
+    /**une porte pouvant mener vers 2 destination */
     private Location[] destination = new Location[2];
     private Boolean isbidirectionnal = true;
     public Exit(Location dest, Location source, Boolean isbidirectionnal ) {
@@ -21,7 +21,9 @@ public  class Exit {
     }
 
     public  void cross(Game game) {
-        /* */
+        /**on va vers la location qui est différente de celle
+         actuelle étant donné qu'une porte peut mener à 2 endroits
+         */
         Location currloc = game.getCurrentLocation();
         for(Location dest : this.destination){
             if( currloc != dest){
