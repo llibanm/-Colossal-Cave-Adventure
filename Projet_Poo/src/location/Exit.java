@@ -21,6 +21,7 @@ public  class Exit {
     }
 
     public  void cross(Game game) {
+        /* */
         Location currloc = game.getCurrentLocation();
         for(Location dest : this.destination){
             if( currloc != dest){

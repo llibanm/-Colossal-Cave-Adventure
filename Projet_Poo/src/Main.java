@@ -6,20 +6,8 @@ import game.Game;
 import location.Location;
 
 public class Main {
-    public static void main(String[] args) {
 
-       // CommandImplementation command = new CommandImplementation();
-
-        //Character h=new Character("Liban");
-        //h.printStats();
-      /* Game.Game c=new Game.Game();
-       c.gameLoop();*/
-        Werewolf w=new Werewolf(4);
-        Goblin g=new Goblin(4);
-        g.printStats();
-        w.printStats();
-
-        //initialisation d'une location
+    public void teste_location_aller_A_vers_B(){
         Game c=new Game();
         Location entryloc  = new Location("entree");
         c.setCurrentLocation(entryloc);
@@ -34,6 +22,20 @@ public class Main {
         curr.goToDestination("middleloc", c);
         System.out.println("location actuelle "+c.getCurrentLocation().getName());
 
+
+    }
+    public static void main(String[] args) {
+
+       // CommandImplementation command = new CommandImplementation();
+
+        //Character h=new Character("Liban");
+        //h.printStats();
+      /* Game.Game c=new Game.Game();
+       c.gameLoop();*/
+        Werewolf w=new Werewolf(4);
+        Goblin g=new Goblin(4);
+        g.printStats();
+        w.printStats();
 
     }
 }
