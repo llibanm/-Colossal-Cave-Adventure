@@ -1,11 +1,10 @@
 package characterPackage.Enemies;
 
 import DamageTypePackage.EnumDamageType;
-import characterPackage.Character;
-import characterPackage.EnumFoes;
+
 import java.util.Random;
 
-public class Goblin extends Character {
+public class Goblin extends Foes {
 
     private EnumDamageType.DamageType damageType;
     private String foeName;

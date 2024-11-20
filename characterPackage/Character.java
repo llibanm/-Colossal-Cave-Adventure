@@ -41,10 +41,6 @@ public abstract class Character {
         level++;
     }
 
-    public String getHeroName() {
-        return heroName;
-    }
-
     public int getHp(){
         return hp;
     }
@@ -90,10 +86,7 @@ public abstract class Character {
                            "Magic resist :" + "["+getMagicResistance()+"]\n");
     }
 
-    public abstract void SpecialAbility();
-    public abstract void setStat(int level);
-    public abstract String switchName(int s);
-    public abstract void switchStats();
+
 
 
 }

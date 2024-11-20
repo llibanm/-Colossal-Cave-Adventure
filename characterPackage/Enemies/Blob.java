@@ -1,11 +1,10 @@
 package characterPackage.Enemies;
 
 import DamageTypePackage.EnumDamageType;
-import characterPackage.Character;
-import characterPackage.EnumFoes;
+
 import java.util.Random;
 
-public class Blob extends Character {
+public class Blob extends Foes {
 
     private EnumDamageType.DamageType damageType;
     private String foeName;

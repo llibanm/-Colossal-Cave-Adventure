@@ -1,9 +1,8 @@
 package characterPackage.Enemies;
 import java.util.Random;
 import DamageTypePackage.EnumDamageType;
-import characterPackage.Character;
-import characterPackage.EnumFoes;
-public class Zombie extends Character {
+
+public class Zombie extends Foes {
 
     private EnumDamageType.DamageType damageType;
     private String foeName;
