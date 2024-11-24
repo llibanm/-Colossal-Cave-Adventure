@@ -20,18 +20,20 @@ public  class Exit {
         }
     }
 
-    public  void cross(Game game) {
+    public  Location cross(Location currloc) {
         /**on va vers la location qui est différente de celle
          actuelle étant donné qu'une porte peut mener à 2 endroits
          */
-        Location currloc = game.getCurrentLocation();
+
         for(Location dest : this.destination){
             if( currloc != dest){
                 //on met la location courant du monde
-                game.setCurrentLocation(dest);
+                return  dest;
             }
         }
+        return currloc;
     }
+
 
 }
 

@@ -15,6 +15,7 @@ public class ExitWithKey extends ExitWithPass {
         }
     }
     public  void setPin(Key newKey){
+        /**changer la clé de dévérouillage*/
         this.key = newKey;
     }
 }

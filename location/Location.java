@@ -9,45 +9,55 @@ public class Location {
 
     private String name;
     private Map<String,  Exit> exists = new HashMap<String, Exit>();
-    private List<Item> listeItems;
+    List<Item> items;
 
     public Location(String name) {
         this.name = name;
     }
 
-    /**affiche les sorties de la location*/
     public void printLocation() {
+        /**affiche les sorties de la location et les items présents dans la location*/
         if (exists == null || exists.isEmpty()) {
             System.out.println("Aucune sortie disponible.");
             return;
         }
-        //liste d'items présent
-        for( Item ite : this.listeItems){
-            ite.getNom();
-        }
 
-        //liste des sorties
         System.out.println("Liste des sorties :");
         for (Map.Entry<String, Exit> entry : exists.entrySet()) {
             String key = entry.getKey(); // La clé (nom de la sortie)
             Exit value = entry.getValue(); // L'objet Exit associé
             System.out.println("Nom : " + key + ", Détail : " + value);
         }
+        System.out.println("Liste d'items :  ");
+        for (Item item : items) {
+            System.out.println("Nom items"+item.getNom());
+        }
+
     }
 
-    public void goToDestination(String dest, Game game) {
+    public Location goToDestination(String dest, Location currloc) {
+       /**Aller vers une destination spécifique, change la destination
+        courante dans game*/
         Exit destination = exists.get(dest);
-        destination.cross(game);
+        return destination.cross(currloc);
     }
 
+    public Exit getExit(String exit){
+        /**retourne une location qui sera casté plus tard
+         pour accéder aux methodes spécifiques (ExitWithPin...)*/
+        return  exists.get(exit);
+    }
     public  void setExit(String name, Exit newExit){
+        /**insere  une nouvelle sortie parmi les sorties de la location actuelle*/
         exists.put(name,newExit);
     }
     public String getName(){
+        /**retourne le nom de la location courante*/
         return  name;
     }
 
     public void addExit(Boolean isbidirectionnal, String name, Location dest){
+        /**crée une nouvelle Sortie et l'insere dans la location actuelle */
         Exit newExit = new Exit(dest, this,isbidirectionnal);
         setExit(name, newExit);
 
@@ -55,7 +65,10 @@ public class Location {
 
 
     public void addExitWithPin(Boolean isbidirectionnal, String name, Location dest, int pin) {
-        Exit newExit = new Exit(dest, this, isbidirectionnal);
+        /** cree une sortie avec code pin et l'insere,
+         si elle est bidirectionnelle elle sera également insérée dans la location de destination
+         afin de pouvoir revenir vers l'actuelle*/
+        ExitWithPin newExit = new ExitWithPin(dest, this,pin, isbidirectionnal);
         setExit(name, newExit);
     }
 
@@ -64,9 +77,23 @@ public class Location {
         setExit(name, newExit);
 
     }
+    public static Location genererMonde(){
+        /**retourne Le monde(composé de 4 lieux) où le jeu se déroulera
+         on retourne le lieux initial qui contiendra les sorties menant aux autres lieux */
+        //liste des locations
+        Location prairieEntree = new Location("prairieEntree");
+        Location foret = new Location("foret");
+        Location montagne = new Location("montagne");
+        Location DessertFinal = new Location("dessertFinal");
 
-    public void addItem(Item item){
-        listeItems.add(item);
+        //insertion des portes entre  les lieux
+        prairieEntree.addExit(true,"foret",foret);
+        foret.addExitWithPin(true,"montagne", montagne, 1234 );
+
+        Key k1 = new Key();
+        montagne.addExitWithKey(false,"dessertFinal", DessertFinal, k1);
+
+        return prairieEntree;
     }
 
 }
