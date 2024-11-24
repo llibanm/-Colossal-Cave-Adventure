@@ -1,7 +1,7 @@
 package game;
 
 import CommandImplementationPackage.*;
-import location.Location;
+import location.*;
 
 import java.util.Scanner;
 
@@ -20,6 +20,9 @@ public class Game //extends CommandImplementation.CommandImplementation
     public Game(){
         gameFinished = false;
         command = new CommandImplementation();
+        /**location principal contenant les accès vers toutes
+         les autres*/
+        currentLocation = Location.genererMonde();
     }
 
     //pour les vérifications
@@ -132,13 +135,45 @@ public class Game //extends CommandImplementation.CommandImplementation
 
 
     }
-
+    /**MARCEL add.......*/
     public Location getCurrentLocation(){
         return  this.currentLocation;
     }
     public  void setCurrentLocation(Location dest){
         this.currentLocation = dest;
     }
+
+    public void goTodestination(String dest){
+        /**on change le lieux actuel en traversant la sortie dest */
+       Location newLoc = getCurrentLocation().goToDestination(dest, getCurrentLocation());
+       setCurrentLocation(newLoc);
+    }
+
+    public void unlockExitWithPin(int pin){
+        /**si la porte est bloqué goTOdestination renverra une erreur
+         il faut d'abord la debloquer en appellant celle ci
+         (ex: COMMANDE UNLOCK dest... puis GO dest)*/
+        Exit e = getCurrentLocation().getExit("montagne");
+        if (e instanceof ExitWithPin){
+            ((ExitWithPin) e).unlock(pin);
+        }
+        else{
+            System.out.println("cette porte n'est pas une porte avec code pin");
+        }
+    }
+
+    public void unlockExitWithKey(Key key){
+        Exit e = getCurrentLocation().getExit("montagne");
+        if (e instanceof ExitWithKey){
+            ((ExitWithKey) e).unlock(key);
+        }
+        else{
+            System.out.println("cette porte n'est pas une porte à clé");
+        }
+    }
+
+
+
 
     // JEU
 

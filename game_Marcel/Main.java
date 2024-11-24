@@ -12,17 +12,23 @@ public class Main {
 
     public static void main(String[] args) {
         TesteLoc testloc = new TesteLoc();
-        testloc.teste_location_aller_A_vers_B();
-       // CommandImplementation command = new CommandImplementation();
+        //testloc.teste_location_aller_A_vers_B();
+        testloc.parcourirMonde();
 
-        //Character h=new Character("Liban");
-        //h.printStats();
+
+    }
+}
+
+// CommandImplementation command = new CommandImplementation();
+
+//Character h=new Character("Liban");
+//h.printStats();
       /* Game.Game c=new Game.Game();
        c.gameLoop();*/
+        /*
         Werewolf w=new Werewolf(4);
         Goblin g=new Goblin(4);
         g.printStats();
         w.printStats();
 
-    }
-}
+         */
