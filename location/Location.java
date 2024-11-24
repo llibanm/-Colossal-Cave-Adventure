@@ -1,16 +1,20 @@
 package location;
 
+import DamageTypePackage.EnumDamageType;
 import ItemPackage.Item;
+import ItemPackage.WeaponPackagge.EnumWeapon;
+import ItemPackage.WeaponPackagge.Weapons;
+import characterPackage.Enemies.Goblin;
 import game.Game;
-
+import characterPackage.Character;
 import java.util.*;
 
 public class Location {
 
     private String name;
     private Map<String,  Exit> exists = new HashMap<String, Exit>();
-    List<Item> items;
-
+    List<Item> items = new ArrayList<>();
+    List<Character> characters = new ArrayList<>();
     public Location(String name) {
         this.name = name;
     }
@@ -30,7 +34,7 @@ public class Location {
         }
         System.out.println("Liste d'items :  ");
         for (Item item : items) {
-            System.out.println("Nom items"+item.getNom());
+            System.out.println("Nom items "+item.getNom());
         }
 
     }
@@ -93,7 +97,46 @@ public class Location {
         Key k1 = new Key();
         montagne.addExitWithKey(false,"dessertFinal", DessertFinal, k1);
 
+        //ajout de quelques items et personnages
+        Weapons marteau = new Weapons("marteau", 10, "masse", EnumWeapon.WeaponType.BOW, EnumDamageType.DamageType.PHYSICAL,20);
+        montagne.addItem(marteau);
+        //Character ch = new Goblin(10);
+        //montagne.addCharacter(ch);
         return prairieEntree;
+    }
+
+    /** Items de la location*/
+    public  void addItem(Item i){
+        items.add(i);
+    }
+    public  int getsizeItems(){
+        return  items.size();
+    }
+    public void removeItem(int index){
+        items.remove(index);
+    }
+    public void printItem(){
+        for (Item item : items){
+            System.out.println("nom item: "+item.getNom());
+        }
+    }
+
+
+    /**Personnages de la location*/
+    public void addCharacter(Character ch){
+        this.characters.add(ch);
+    }
+
+    public void removeCharacter(int index){
+        this.characters.remove(index);
+    }
+    public void printCharacters(){
+        for (Character ch : characters){
+            System.out.println("nom perso: "+ch.getHeroName());
+        }
+    }
+    public  int getSizeCharacters(){
+        return characters.size();
     }
 
 }

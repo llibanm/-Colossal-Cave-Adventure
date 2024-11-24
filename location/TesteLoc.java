@@ -34,6 +34,8 @@ public class TesteLoc {
        g.goTodestination("montagne");//erreur car mdp pas inséré !!!
        g.unlockExitWithPin(1234);
        g.goTodestination("montagne");
+
+        g.getCurrentLocation().printLocation();
        System.out.println(g.getCurrentLocation().getName());
     }
 }
