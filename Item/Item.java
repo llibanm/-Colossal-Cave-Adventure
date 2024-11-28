@@ -1,15 +1,14 @@
-public class Item {
+package Item;
+
+public abstract class Item {
     private String nom;
     private String description;
     private double volume;
-    private boolean transportable;
-
     // Constructeur
-    public Item(String nom, String description, double volume, boolean transportable) {
+    public Item(String nom, String description, double volume) {
         this.nom = nom;
         this.description = description;
         this.volume = volume;
-        this.transportable = transportable;
     }
 
     // Getters
@@ -25,9 +24,6 @@ public class Item {
         return volume;
     }
 
-    public boolean isTransportable() {
-        return transportable;
-    }
 
     // Méthode par défaut pour utiliser un objet
     public void utiliser() {
@@ -40,7 +36,6 @@ public class Item {
                 "nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
                 ", volume=" + volume +
-                ", transportable=" + transportable +
                 '}';
     }
 }

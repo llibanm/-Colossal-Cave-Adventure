@@ -1,10 +1,12 @@
+package Item;
+
 public abstract class Arme extends Item {
     private int degats;
     private boolean active;
 
     // Constructeur
-    public Arme(String nom, String description, double volume, boolean transportable, int degats) {
-        super(nom, description, volume, transportable);
+    public Arme(String nom, String description, double volume, int degats) {
+        super(nom, description, volume);
         this.degats = degats;
         this.active = false;
     }

@@ -1,6 +1,6 @@
 package BackpackPackage;
 
-import ItemPackage.Item;
+import Item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,36 +8,36 @@ import java.util.List;
 public class Backpack {
 
     private List<Item> items;
-    private final double MAX_WEIGHT;
-    private double weight;
+    private final double MAX_CAPACITY;
+    private double capacity;
 
-    public Backpack(double weight) {
+    public Backpack(double cap) {
         items = new ArrayList<Item>();
-        MAX_WEIGHT = weight;
-        weight = 0;
+        MAX_CAPACITY = cap;
+        capacity = 0;
     }
 
     public void printMaxWeight(){
-        System.out.println("\nthe MAX weight of current backpack is ["+MAX_WEIGHT+"]");
+        System.out.println("\nthe MAX weight of current backpack is ["+MAX_CAPACITY+"]");
     }
 
     public void printWeight(){
-        System.out.println("\nthe weight of current backpack is ["+weight+"]");
+        System.out.println("\nthe weight of current backpack is ["+capacity+"]");
     }
 
     // for item in backpack
     public void addItem(Item item) {
-        if(weight + item.getPoids() > MAX_WEIGHT) {
+        if(capacity + item.getVolume() > MAX_CAPACITY) {
             System.out.println("\n The weight is too large.\n");
             return;
         }
         items.add(item);
-        weight+=item.getPoids();
+        capacity+=item.getVolume();
     }
 
     public void removeItem(Item item) {
         items.remove(item);
-        weight-=item.getPoids();
+        capacity-=item.getVolume();
     }
 
     public void printItems() {
@@ -53,7 +53,7 @@ public class Backpack {
                System.out.println("\n************[LOOKING INTO "+item.getNom()+"]*************");
                System.out.println("\n["+item.getNom()+"]");
                System.out.println("\n"+item.getDescription());
-               System.out.println("\nWeight of "+item.getNom()+":["+item.getPoids()+"]\n");
+               System.out.println("\nWeight of "+item.getNom()+":["+item.getVolume()+"]\n");
            }
         }
     }

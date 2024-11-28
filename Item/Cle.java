@@ -1,9 +1,11 @@
+package Item;
+
 public class Cle extends Item {
     private String cible;
 
     // Constructeur
     public Cle(String nom, String description, double volume, boolean transportable, String cible) {
-        super(nom, description, volume, transportable);
+        super(nom, description, volume);
         this.cible = cible;
     }
 

@@ -1,9 +1,8 @@
 package location;
 
 import DamageTypePackage.EnumDamageType;
-import ItemPackage.Item;
-import ItemPackage.WeaponPackagge.EnumWeapon;
-import ItemPackage.WeaponPackagge.Weapons;
+import Item.Item;
+import Item.Arme;
 import characterPackage.Enemies.Goblin;
 import game.Game;
 import characterPackage.Character;
@@ -98,7 +97,7 @@ public class Location {
         montagne.addExitWithKey(false,"dessertFinal", DessertFinal, k1);
 
         //ajout de quelques items et personnages
-        Weapons marteau = new Weapons("marteau", 10, "masse", EnumWeapon.WeaponType.BOW, EnumDamageType.DamageType.PHYSICAL,20);
+        Arme marteau = new Arme("marteau", "", 5, 10);
         montagne.addItem(marteau);
         //Character ch = new Goblin(10);
         //montagne.addCharacter(ch);

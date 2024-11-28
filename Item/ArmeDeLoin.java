@@ -1,8 +1,9 @@
+package Item;
 public class ArmeDeLoin extends Arme {
 
     // Constructeur
     public ArmeDeLoin(String nom, String description, double volume, boolean transportable, int degats) {
-        super(nom, description, volume, transportable, degats);
+        super(nom, description, volume, degats);
     }
 
     public void attaquer() {

@@ -1,8 +1,10 @@
+package Item;
+
 public class ArmeDePres extends Arme {
 
     // Constructeur
     public ArmeDePres(String nom, String description, double volume, boolean transportable, int degats) {
-        super(nom, description, volume, transportable, degats);
+        super(nom, description, volume, degats);
     }
 
     @Override
