@@ -1,7 +1,5 @@
 package location;
 
-import game.Game;
-
 public  class Exit {
     /**une porte pouvant mener vers 2 destination */
     private Location[] destination = new Location[2];

@@ -1,7 +1,7 @@
 package item;
 
 public abstract class Item {
-    private String nom;
+    private  String nom;
     private String description;
     private double volume;
     // Constructeur

@@ -1,7 +1,5 @@
 package location;
 
-import game.Game;
-
 public class ExitWithPass extends Exit{
     /**classe de base representant les comportements
      commun entre toutes les portes nécessitant une

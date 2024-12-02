@@ -1,6 +1,4 @@
-package location;
-
-import game.Game;
+/*package location;
 
 public class TesteLoc {
     public  void teste_location_aller_A_vers_B(){
@@ -26,7 +24,7 @@ public class TesteLoc {
 
     public void parcourirMonde(){
     /**Teste : on traverse les locations en insérant les clés si nécessaire...*/
-        Game g = new Game();
+/*        Game g = new Game();
        Location monde = Location.genererMonde();
        g.setCurrentLocation(monde);
        g.goTodestination("foret");
@@ -38,4 +36,4 @@ public class TesteLoc {
         g.getCurrentLocation().printLocation();
        System.out.println(g.getCurrentLocation().getName());
     }
-}
+}*/

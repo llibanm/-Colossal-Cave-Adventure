@@ -1,7 +1,5 @@
 package location;
 
-import game.Game;
-
 public class ExitWithPin extends  ExitWithPass {
     int pin;
     ExitWithPin(Location dest, Location source, int pin, Boolean isbidirectionnal){
