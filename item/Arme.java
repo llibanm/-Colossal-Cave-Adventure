@@ -1,4 +1,4 @@
-package Item;
+package item;
 
 public abstract class Arme extends Item {
     private int degats;

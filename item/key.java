@@ -1,12 +1,12 @@
-package Item;
+package item;
 
-public class Cle extends Item {
-    private String cible;
+public class key extends Item {
+    private final String cible;
 
     // Constructeur
-    public Cle(String nom, String description, double volume, boolean transportable, String cible) {
+    public key(String nom, String description, double volume, boolean cible) {
         super(nom, description, volume);
-        this.cible = cible;
+        this.cible = getCible();
     }
 
     // Getter pour la cible
@@ -21,7 +21,7 @@ public class Cle extends Item {
 
     @Override
     public String toString() {
-        return "Cle{" +
+        return "key{" +
                 "nom='" + getNom() + '\'' +
                 ", description='" + getDescription() + '\'' +
                 ", volume=" + getVolume() +
@@ -29,3 +29,4 @@ public class Cle extends Item {
                 '}';
     }
 }
+

@@ -1,7 +1,5 @@
 package CommandImplementationPackage;
 
-import GameInterfacePackage.CommandInterface;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;

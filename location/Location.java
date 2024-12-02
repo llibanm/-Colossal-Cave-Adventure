@@ -1,11 +1,10 @@
 package location;
 
-import DamageTypePackage.EnumDamageType;
-import Item.Item;
-import Item.Arme;
-import characterPackage.Enemies.Goblin;
-import game.Game;
+import item.key;
+import item.Item;
+import item.Arme;
 import characterPackage.Character;
+
 import java.util.*;
 
 public class Location {
@@ -75,7 +74,7 @@ public class Location {
         setExit(name, newExit);
     }
 
-    public void addExitWithKey(Boolean isbidirectionnal, String name, Location dest, Key key) {
+    public void addExitWithKey(Boolean isbidirectionnal, String name, Location dest, key key) {
         Exit newExit = new Exit(dest, this, isbidirectionnal);
         setExit(name, newExit);
 
@@ -93,11 +92,11 @@ public class Location {
         prairieEntree.addExit(true,"foret",foret);
         foret.addExitWithPin(true,"montagne", montagne, 1234 );
 
-        Key k1 = new Key();
+        key k1 = new key("key","",12,true);
         montagne.addExitWithKey(false,"dessertFinal", DessertFinal, k1);
 
         //ajout de quelques items et personnages
-        Arme marteau = new Arme("marteau", "", 5, 10);
+        Arme marteau = new item.ArmeDePres("marteau", "zerty", 5, 10);
         montagne.addItem(marteau);
         //Character ch = new Goblin(10);
         //montagne.addCharacter(ch);
@@ -131,7 +130,7 @@ public class Location {
     }
     public void printCharacters(){
         for (Character ch : characters){
-            System.out.println("nom perso: "+ch.getHeroName());
+            System.out.println("nom perso: "+ch.getName());
         }
     }
     public  int getSizeCharacters(){

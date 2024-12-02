@@ -1,6 +1,6 @@
 package characterPackage.Enemies;
 
-import DamageTypePackage.EnumDamageType;
+import characterPackage.EnumDamageType;
 
 import java.util.Random;
 

@@ -1,6 +1,6 @@
 package location;
 
-import game.Game;
+import java.security.Key;
 
 public class ExitWithKey extends ExitWithPass {
     private Key key;

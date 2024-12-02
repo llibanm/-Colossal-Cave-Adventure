@@ -1,9 +1,9 @@
-package Item;
+package item;
 
 public class ArmeDePres extends Arme {
 
     // Constructeur
-    public ArmeDePres(String nom, String description, double volume, boolean transportable, int degats) {
+    public ArmeDePres(String nom, String description, int volume, int degats) {
         super(nom, description, volume, degats);
     }
 

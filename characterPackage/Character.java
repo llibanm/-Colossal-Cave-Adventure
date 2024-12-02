@@ -2,13 +2,14 @@ package characterPackage;
 
 public abstract class Character {
     //stats
+    private String name;
     private int level;
     private int hp;
     private int armor;
     private int power;
     private int magicResistance;
     //name
-    private String heroName;
+    //private String heroName;
 
 
     // getter/setter/increase
@@ -57,6 +58,7 @@ public abstract class Character {
         return power;
     }
 
+    public String getName() {return name;}
 
     public void increaseHp(int amount) {
             this.hp+=amount;

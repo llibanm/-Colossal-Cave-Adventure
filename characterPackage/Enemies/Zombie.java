@@ -1,6 +1,6 @@
 package characterPackage.Enemies;
 import java.util.Random;
-import DamageTypePackage.EnumDamageType;
+import characterPackage.EnumDamageType;
 
 public class Zombie extends Foes {
 

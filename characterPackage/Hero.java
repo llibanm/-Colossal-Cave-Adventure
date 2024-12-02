@@ -1,6 +1,6 @@
 package characterPackage;
 
-import BackpackPackage.*;
+import item.Backpack;
 
 public class Hero extends Character {
 
