@@ -6,9 +6,7 @@ import java.util.Random;
 
 public class Blob extends Foes {
 
-    private EnumDamageType.DamageType damageType;
-    private String foeName;
-    private static EnumFoes.Foes DEFAULT_FOE= EnumFoes.Foes.BLOB;
+
     private EnumFoes.FoesStatus foesStatus;
 
     private static int maxHp;
@@ -19,9 +17,11 @@ public class Blob extends Foes {
 
 
     public Blob(int status) {
-        foeName=switchName(status);
+        setFoe(EnumFoes.Foes.BLOB);
+        String s=switchName(status);
+        setFoeName(s);
         switchStats();
-        damageType= EnumDamageType.DamageType.MAGIC;
+        setDamageType(EnumDamageType.DamageType.MAGIC);
         maxHp=getHp();
     }
 
@@ -85,7 +85,7 @@ public class Blob extends Foes {
 
     @Override
     public void printStats() {
-        System.out.println("\n["+foeName+"]");
+        System.out.println("\n["+getFoeName()+"]");
         super.printStats();
     }
 
@@ -112,12 +112,12 @@ public class Blob extends Foes {
 
 
 
-    @Override
+   /* @Override
     public void SpecialAbility() {// will regenerate HP based of his Magic resist for 2 turns when Hp <=30%
         //int percentage_hp_below_30=(getHp()*100)/maxHp;
         int regenPerTurnPercentage=getMagicResistance()/2; // regen will be half of MR
         int regenPerTurn=(100+regenPerTurnPercentage)/100; // percentage of regen
-        int regenHp=getHp()*regenPerTurn; //get newer hp amount*/
+        int regenHp=getHp()*regenPerTurn; //get newer hp amount
 
         if(checkIfHpInf30())
             if(regenHp>maxHp){
@@ -128,5 +128,5 @@ public class Blob extends Foes {
 
 
 
-    }
+    }*/
 }

@@ -1,7 +1,5 @@
 package location;
 
-import java.security.Key;
-
 public class ExitWithKey extends ExitWithPass {
     private Key key;
     public ExitWithKey(Location dest, Location source, Key key, Boolean isbidirectionnal){

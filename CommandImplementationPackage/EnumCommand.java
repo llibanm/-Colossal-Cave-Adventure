@@ -2,7 +2,17 @@ package CommandImplementationPackage;
 
 public class EnumCommand {
     public enum Command {
-        GO ,HELP,LOOK,TAKE,DROP,DESTROY,SAVE,QUIT,LOAD,USE
+        GO ,
+        HELP,//DONE
+        LOOK,//DONE
+        TAKE,//DONE
+        DROP,//DONE
+        DESTROY,//DONE
+        SAVE,
+        ATTACK,//DONE
+        QUIT,//DONE
+        LOAD,
+        USE,//DONE
     }
     
 }

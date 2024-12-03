@@ -6,22 +6,20 @@ import java.util.Random;
 
 public class Goblin extends Foes {
 
-    private EnumDamageType.DamageType damageType;
-    private String foeName;
-    private static EnumFoes.Foes DEFAULT_FOE= EnumFoes.Foes.GOBLIN;
     private EnumFoes.FoesStatus foesStatus;
 
     private Random rand = new Random();
 
     public Goblin(int status) {
-        foeName=switchName(status);
+        setFoe(EnumFoes.Foes.GOBLIN);
+        String s=switchName(status);
         switchStats();
-        damageType= EnumDamageType.DamageType.PHYSICAL;
+        setDamageType(EnumDamageType.DamageType.PHYSICAL);
     }
 
     @Override
     public void printStats() {
-        System.out.println("\n["+foeName+"]");
+        System.out.println("\n["+getFoeName()+"]");
         super.printStats();
     }
 
@@ -92,10 +90,10 @@ public class Goblin extends Foes {
         return res;
     }
 
-    @Override
+   /* @Override
     public void SpecialAbility(){// attack twice
 
-    }
+    }*/
 
 
 

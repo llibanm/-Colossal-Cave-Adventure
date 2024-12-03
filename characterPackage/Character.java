@@ -2,14 +2,13 @@ package characterPackage;
 
 public abstract class Character {
     //stats
-    private String name;
     private int level;
     private int hp;
     private int armor;
     private int power;
     private int magicResistance;
     //name
-    //private String heroName;
+
 
 
     // getter/setter/increase
@@ -42,6 +41,7 @@ public abstract class Character {
         level++;
     }
 
+
     public int getHp(){
         return hp;
     }
@@ -58,18 +58,29 @@ public abstract class Character {
         return power;
     }
 
-    public String getName() {return name;}
 
     public void increaseHp(int amount) {
             this.hp+=amount;
+    }
+
+    public void lowerHp(int amount) {
+        this.hp-=amount;
     }
 
     public void increaseArmor(int amount) {
         this.armor+=amount;
     }
 
+    public void lowerArmor(int amount) {
+        this.armor-=amount;
+    }
+
     public void increasePower(int amount) {
         this.power+=amount;
+    }
+
+    public void lowerPower(int amount) {
+        this.power-=amount;
     }
 
     public void multiplyPower(int amount) {
@@ -80,6 +91,10 @@ public abstract class Character {
         this.magicResistance+=amount;
     }
 
+    public void lowerMagicResistance(int amount) {
+        this.magicResistance-=amount;
+    }
+
     public void printStats() {
         System.out.println("\nLevel : " + " ["+getLevel()+"] \n" +
                            "Health : " + "["+getHp()+"]\n"+
@@ -87,6 +102,11 @@ public abstract class Character {
                            "Armor : " + " ["+getArmor()+"]\n"+
                            "Magic resist :" + "["+getMagicResistance()+"]\n");
     }
+
+    public void printDamageDealt(int amount, EnumDamageType.DamageType damageType,String source) {
+        System.out.println("["+amount+"] of ["+damageType+"] damage have been dealt to ["+source+"]" );
+    }
+
 
 
 

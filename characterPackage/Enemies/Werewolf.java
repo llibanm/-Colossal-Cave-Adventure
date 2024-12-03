@@ -6,23 +6,22 @@ import characterPackage.EnumDamageType;
 public class Werewolf extends Foes {
 
 
-    private EnumDamageType.DamageType damageType;
-    private String foeName;
-    private static EnumFoes.Foes DEFAULT_FOE= EnumFoes.Foes.WEREWOLF;
     private EnumFoes.FoesStatus foesStatus;
 
     private Random rand=new Random();
 
     public Werewolf(int status) {
-        foeName=switchName(status);
+        setFoe(EnumFoes.Foes.WEREWOLF);
+        String n=switchName(status);
+        setFoeName(n);
         switchStats();
-        damageType= EnumDamageType.DamageType.PHYSICAL;
+        setDamageType(EnumDamageType.DamageType.PHYSICAL);
 
     }
 
     @Override
     public void printStats() {
-        System.out.println("\n["+foeName+"]");
+        System.out.println("\n["+getFoeName()+"]");
         super.printStats();
     }
 
@@ -93,11 +92,11 @@ public class Werewolf extends Foes {
         return res;
     }
 
-    @Override
+   /* @Override
     public void SpecialAbility(){// power double
         multiplyPower(2);
 
-    }
+    }*/
 
 
 }

@@ -5,20 +5,20 @@ import characterPackage.EnumDamageType;
 public class Zombie extends Foes {
 
     private EnumDamageType.DamageType damageType;
-    private String foeName;
-    private static EnumFoes.Foes DEFAULT_FOE= EnumFoes.Foes.WEREWOLF;
     private EnumFoes.FoesStatus foesStatus;
 
     private Random rand = new Random();
     public Zombie(int status){
-        foeName=switchName(status);
+        setFoe(EnumFoes.Foes.ZOMBIES);
+        String s=switchName(status);
+        setFoeName(s);
         switchStats();
-        damageType= EnumDamageType.DamageType.PHYSICAL;
+        setDamageType(EnumDamageType.DamageType.PHYSICAL);
     }
 
     @Override
     public void printStats() {
-        System.out.println("\n["+foeName+"]");
+        System.out.println("\n["+getFoeName()+"]");
         super.printStats();
     }
 
@@ -90,8 +90,8 @@ public class Zombie extends Foes {
         setMagicResistance(getLevel()*2);
     }
 
-    @Override
+    /*@Override
     public void SpecialAbility() {// will inflict bleed status
 
-    }
+    }*/
 }

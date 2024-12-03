@@ -1,9 +1,9 @@
 package location;
 
-import item.key;
-import item.Item;
-import item.Arme;
-import characterPackage.Character;
+import ItemPackage.Item.Item;
+import ItemPackage.Item.Comrade;
+import ItemPackage.Item.meleeWeapon.RockyHammer;
+import characterPackage.Enemies.*;
 
 import java.util.*;
 
@@ -12,7 +12,8 @@ public class Location {
     private String name;
     private Map<String,  Exit> exists = new HashMap<String, Exit>();
     List<Item> items = new ArrayList<>();
-    List<Character> characters = new ArrayList<>();
+    List<Comrade> Allies = new ArrayList<>();
+    List<Foes> Foe = new ArrayList<>();
     public Location(String name) {
         this.name = name;
     }
@@ -20,19 +21,19 @@ public class Location {
     public void printLocation() {
         /**affiche les sorties de la location et les items présents dans la location*/
         if (exists == null || exists.isEmpty()) {
-            System.out.println("Aucune sortie disponible.");
+            System.out.println("No exit visible.");
             return;
         }
 
-        System.out.println("Liste des sorties :");
+        System.out.println("list of exits :");
         for (Map.Entry<String, Exit> entry : exists.entrySet()) {
             String key = entry.getKey(); // La clé (nom de la sortie)
             Exit value = entry.getValue(); // L'objet Exit associé
-            System.out.println("Nom : " + key + ", Détail : " + value);
+            System.out.println("Name : " + key + ", detail : " + value);
         }
-        System.out.println("Liste d'items :  ");
+        System.out.println("list of items :  ");
         for (Item item : items) {
-            System.out.println("Nom items "+item.getNom());
+            System.out.println("item name "+item.getNom());
         }
 
     }
@@ -74,7 +75,7 @@ public class Location {
         setExit(name, newExit);
     }
 
-    public void addExitWithKey(Boolean isbidirectionnal, String name, Location dest, key key) {
+    public void addExitWithKey(Boolean isbidirectionnal, String name, Location dest, Key key) {
         Exit newExit = new Exit(dest, this, isbidirectionnal);
         setExit(name, newExit);
 
@@ -92,49 +93,131 @@ public class Location {
         prairieEntree.addExit(true,"foret",foret);
         foret.addExitWithPin(true,"montagne", montagne, 1234 );
 
-        key k1 = new key("key","",12,true);
+        prairieEntree.addFoe(new Werewolf(1));
+
+        Key k1 = new Key();
         montagne.addExitWithKey(false,"dessertFinal", DessertFinal, k1);
 
         //ajout de quelques items et personnages
-        Arme marteau = new item.ArmeDePres("marteau", "zerty", 5, 10);
-        montagne.addItem(marteau);
+        RockyHammer hammer= new RockyHammer();
+        prairieEntree.addItem(hammer);
+        montagne.addItem(hammer);
         //Character ch = new Goblin(10);
         //montagne.addCharacter(ch);
         return prairieEntree;
     }
 
-    /** Items de la location*/
+    /** Items of location*/
     public  void addItem(Item i){
         items.add(i);
     }
+
+    public Item getItem(String name){
+        Item i=null;
+        for(Item item : items){
+            if(name.equals(item.getNom())){
+                i=item;
+                removeItem(i);
+                break;
+            }
+        }
+        return i;
+    }
+
     public  int getsizeItems(){
         return  items.size();
     }
+
+    public void removeItem(Item i){
+        items.remove(i);
+    }
+
     public void removeItem(int index){
         items.remove(index);
     }
+
     public void printItem(){
         for (Item item : items){
-            System.out.println("nom item: "+item.getNom());
+            System.out.println("item name: "+item.getNom());
         }
     }
 
 
-    /**Personnages de la location*/
-    public void addCharacter(Character ch){
-        this.characters.add(ch);
+    /**enemy of location*/
+
+    public void addFoe(Foes foe){
+        this.Foe.add(foe);
     }
 
-    public void removeCharacter(int index){
-        this.characters.remove(index);
+    public void removeFoe(int index){
+        this.Foe.remove(index);
     }
+
+    public void printFoes(){
+
+        if(Foe.isEmpty()){
+            System.out.println("Aucun Enemie en vue!!!.");
+            return;
+        }
+
+        for (Foes f : Foe){
+
+            switch (f.getFoe()){
+                case BLOB :
+                    ((Blob)f).printStats();
+                    break;
+
+                case ZOMBIES:
+                    ((Zombie)f).printStats();
+                    break;
+
+                case GOBLIN:
+                    ((Goblin)f).printStats();
+                    break;
+
+                case WEREWOLF:
+                    ((Werewolf)f).printStats();
+                    break;
+            }
+
+        }
+    }
+
+    public int getSizeFoe(){
+        return Foe.size();
+    }
+
+    public Foes getFirstFoe(){
+        if(Foe.isEmpty()){
+            return null;
+        }
+        return Foe.get(0);
+    }
+
+    public Foes getIndexFoe(int index){
+        return Foe.get(index);
+    }
+
+    public boolean areFoesEmpty(){
+        return Foe.isEmpty();
+    }
+
+    /**character of location*/
+    public void addAlly(Comrade al){
+        this.Allies.add(al);
+    }
+
+    public void removeAllies(int index){
+        this.Allies.remove(index);
+    }
+
     public void printCharacters(){
-        for (Character ch : characters){
-            System.out.println("nom perso: "+ch.getName());
+        for (Comrade al : Allies){
+            System.out.println("nom perso: "+al.getName());
         }
     }
-    public  int getSizeCharacters(){
-        return characters.size();
+    public  int getSizeAllies(){
+        return Allies.size();
     }
 
 }
